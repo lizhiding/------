@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+var name = 'name';
+var A = {
+  name: 'A',
+  sayHello: function() {
+      let s = () => console.log(this.name);
+      return s;
+  }
+};
+let sayHello = A.sayHello();
+// this指向A。因为箭头函数中this的取决于this上一层作用域的this，而上层作用域this指向调用者A
+sayHello();
+
+var B = {
+  name: 'B'
+};
+// 试图去改变this的指向
+sayHello.call(B);
+
+// 分析：
+// 虽然call函数一般用于改变this的指向，
+// 但是箭头函数中this的指向在定义的时候已经确定下来，它是静态的，一经定义就无法改变。
+// 所以sayHello.call(B);并没有起到改变this的作用
+// 因此两次执行this都会指向A
+// 找箭头函数的指向，一般来讲需要向上找两次。
+
+</script>
+</html>

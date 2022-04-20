@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <style>
+    .left, .right{
+      float: left;
+    }
+    .left {
+      width: 48%;
+      height: 500px;
+      border: 1px solid purple;
+      overflow: scroll;
+      margin-right: 1%;
+    }
+    .right {
+      width: 48%;
+      height: 500px;
+      border: 1px solid purple;
+    }
+  </style>
+  <body>
+      <div class = "left">
+      </div>
+      <div class = "right">
+      </div>
+  </body>
+  <script>
+    // 节流函数
+    function throttle (handle, delay) {
+        // 节流的关键所在
+        let prevTime = Date.now()
+        return function () {
+            if (Date.now() - prevTime >= delay) {
+                // 时间到了以后执行事件处理程序，并重置prevTime
+                handle()
+                prevTime = Date.now()
+            }    
+        }
+    }
+    // 事件处理函数
+    function handle () {
+        console.log('执行函数');
+        const node = document.createElement('li');
+        const text = document.createTextNode('执行事件处理函数.');
+        node.appendChild(text);
+        document.getElementsByClassName('right')[0].appendChild(node);
+    }
+
+    // 添加事件监听器
+    document.getElementsByClassName('left')[0].addEventListener('scroll', throttle(handle, 1000))
+
+    // 生成滚动栏的内容，以下部分和上面的html、css只为构造一个实验环境
+    let content = ''
+    for (let i = 0; i < 1000; i++) {
+      content += '在我上面滚动鼠标'
+    }
+    const textNode = document.createTextNode(content)
+    document.getElementsByClassName('left')[0].appendChild(textNode)
+  </script>
+</html>

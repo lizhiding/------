@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <style>
+    .left, .right{
+      float: left;
+    }
+    .left {
+      width: 48%;
+      height: 500px;
+      border: 1px solid purple;
+      overflow: scroll;
+      margin-right: 1%;
+    }
+    .right {
+      width: 48%;
+      height: 500px;
+      border: 1px solid purple;
+    }
+  </style>
+  <body>
+      <div class = "left">
+      </div>
+      <div class = "right">
+      </div>
+  </body>
+  <script>
+    // 为什么要使用闭包？
+    // 首先，无论在全局还是闭包，都可以满足timer常驻内存的需求。
+    // 其次，不使用闭包，在全局定义timer也可以实现防抖，但是在全局定义会造成变量污染。而闭包可以解决变量污染的问题。
+    
+    // 防抖函数
+    function anti_shake(handler, delay) {
+      let timer = null;
+      return function () {
+        // 重置定时器（清理上次的，重置时间）
+        clearTimeout(timer);
+        timer = setTimeout(handler, delay);
+        // if (timer) {
+        //     // 如果规定的时间内，再次了触发事件。清理上一次的定时器，并重置定时器延迟执行
+        //     clearTimeout(timer);
+        //     timer = setTimeout(handler, delay);
+        // }
+        // else{
+        //     // 如果之前的timer已执行完毕。重置定时器，计划延迟执行
+        //     timer = setTimeout(handler, delay);
+        // }
+      }
+    }
+    // 事件处理函数
+    function handler () {
+      const node = document.createElement('li')
+      const text = document.createTextNode('执行事件处理函数.')
+      node.appendChild(text)
+      document.getElementsByClassName('right')[0].appendChild(node)
+    }
+    // 添加事件监听器，形成了一个闭包
+    document.getElementsByClassName('left')[0].addEventListener('scroll', anti_shake(handler, 1000))
+    
+    // 生成滚动栏的内容，以下部分和上面的html、css只为构造一个实验环境
+    let content = ''
+    for (let i = 0; i < 1000; i++) {
+      content += '在我上面滚动鼠标'
+    }
+    const textNode = document.createTextNode(content)
+    document.getElementsByClassName('left')[0].appendChild(textNode)
+  </script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang = "en">
+  <body>
+    <div class = "left">
+    </div>
+    <div class = "right">
+    </div>
+</body>
+<div id="number">0</div>
+<button id="button">请疯狂点击</button>
+<script>
+    // 节流函数
+    function throttle(handler, delay) {
+        let prevTime = Date.now()
+        return function () {
+            if (Date.now() - prevTime >= delay) {
+                // 时间到了以后执行事件处理程序，并重置prevTime
+                handler();
+                prevTime = Date.now();
+            }    
+        }
+    }
+
+    //事件处理函数
+    var number = document.getElementById("number");
+    var num = 0;
+    function handler(){
+      ++num;
+      console.log('执行' + num.toString());
+      number.innerText =  num;
+    }
+
+  // 给节点绑定节流函数
+  document.getElementById("button").onclick = throttle(handler,1000);
+
+</script>
+</html>  

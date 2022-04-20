@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用BFC防止margin重叠</title>
+    <style>
+        /* 选中所有的元素 */
+        *
+        {
+            /* 外边距为0 */
+            margin: 0;
+            /* 内边距为0 */
+            padding: 0;
+        }
+        p 
+        {
+            color: red;
+            background: yellow;
+            border: 1px solid black;
+            width: 200px;
+            line-height: 100px;
+            text-align:center;
+            margin: 30px;
+        }
+        
+        div
+        {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1>通过设置BFC，避免了margin重叠</h1>
+    <p>看看我的 margin是多少</p>
+    <p>看看我的 margin是多少</p>
+    <!-- 通过添加overflow: hidden激活BFC，避免了margin的重叠 -->
+    <div>
+        <p>看看我的 margin是多少</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    // 字面量，创建字符串，存储的是常量，type为object
+    const str1 = 'abc';
+    console.log(typeof(str1));
+    console.log(str1.constructor.name);
+    console.log(str1.__proto__);
+
+    // 构造函数，创建字符串，存储的是地址，type为构造函数
+    const str2 = new String('abc');
+    console.log(typeof(str2));
+    console.log(str2.constructor.name);
+    console.log(str2.__proto__);
+
+    console.log('new的具体过程');
+    // new的具体过程
+    // 1 创建一个空对象
+    var obj = new Object(); 
+    // 2 改变构造函数的this指向，指向obj
+    var result = String.call(obj);  
+    // 3 设置原型链（实例的隐式原型指向构造函数的显式原型）
+    obj.__proto__ = String.prototype; 
+    // 4 返回结果(如何理解？？？)
+    if (typeof(result) == "object")
+        str = result;
+    else
+        str = obj;
+
+        
+
+
+
+</script>
+</html>

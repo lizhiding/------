@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用BFC解决包含塌陷</title>
+    <style>
+        .parent1
+        {
+            background-color: blueviolet;
+            height: 300px;
+            width: 300px;
+        }
+        .parent2
+        {
+            background-color: blueviolet;
+            height: 300px;
+            width: 300px;
+            overflow: hidden;
+        }
+        
+        .child 
+        {
+            background-color: aqua;
+            width:100px;
+            height: 100px;
+            margin-top: 100px;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>不设置BFC，给子元素添加margin-top，有可能会把父元素一起带跑。</h1>
+    <div class="parent1">
+        <div class="child"></div>
+    </div>
+    <br>
+    <h1>不设置BFC，防止把父元素一起带跑。</h1>
+    <div class="parent2">
+        <div class="child"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        body 
+        {
+            width: 100%;
+            position: relative;
+        }
+        .left
+        {
+            width: 100px;
+            height: 150px;
+            background: red;
+            border: 1px solid black;
+            float: left;
+            text-align: center;
+            line-height: 150px;
+            font-size: 20px;
+        }
+        .right1
+        {
+            /* width: 100px; */
+            height: 300px;
+            background: rgb(0, 255, 76);
+            border: 1px solid black;
+            
+            text-align: center;
+            line-height: 300px;
+            font-size: 20px;
+            /* margin: 10px 10px 10px 10px; */
+        }
+
+        .right2
+        {
+            /* 使right单独成为一个BFC */
+            overflow:hidden;
+            /* width: 100px; */
+            height: 300px;
+            background: rgb(0, 255, 76);
+            border: 1px solid black;
+            
+            text-align: center;
+            line-height: 300px;
+            font-size: 20px;
+            /* margin: 10px 10px 10px 10px; */
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>每个盒子的margin box的左边，与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。</h1>
+    <div class="left">LEFT</div>
+    <div class="right1">RIGHT</div>
+    <br>
+    <h1>利用BFC的区域不会与float box重叠这一特征，将右侧设置为BFC，从而形成了一个两栏右侧自适应的布局</h1>
+    <div class="left">LEFT</div>
+    <div class="right2">RIGHT</div>
+    
+</body>
+</html>

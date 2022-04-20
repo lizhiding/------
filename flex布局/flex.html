@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1{
+            width:100%;
+            height:400px;
+            border:1px solid black;
+            /* 使用弹性布局*/
+            display:flex;
+            /* 主轴方向（元素的排列方向）
+            row：元素从左到右排列（默认）
+            co1umn：元素从上到下排列 */
+            flex-direction: column;
+            /* 主轴方向对齐方式（默认start） */
+            justify-content:center;
+            /* 交叉轴方向对齐方式（默认start） */
+            align-items:flex-start
+            
+        }
+        .box2{
+            width:100%;
+            height:400px;
+            border:1px solid black;
+            /* 使用弹性布局*/
+            display:flex;
+            /* 主轴方向（元素的排列方向）
+            row：元素从左到右排列（默认）
+            co1umn：元素从上到下排列 */
+            flex-direction: column;
+            /* 主轴方向对齐方式（默认start） */
+            justify-content:center;
+            /* 交叉轴方向对齐方式（默认start） */
+            align-items:center
+            
+        }
+        .box3{
+            width:100%;
+            height:400px;
+            border:1px solid black;
+            /* 使用弹性布局*/
+            display:flex;
+            /* 主轴方向（元素的排列方向）
+            row：元素从左到右排列（默认）
+            co1umn：元素从上到下排列 */
+            flex-direction: column-reverse;
+            /* 主轴方向对齐方式（默认start） */
+            /* justify-content:flex-start; */
+            /* 交叉轴方向对齐方式（默认start） */
+            align-items:center
+            
+        }
+
+        .box4{
+            width: 800px;;
+            height:600px;
+            border:1px solid black;
+            display:flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            align-items:flex-start
+        }
+
+        .item{
+            width:100px;
+            height:100px;
+            border:1px solid red;
+            /* 元素内的文本对齐方式 */
+            text-align: center;
+            /* 一行文本的高度值 */
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+   <h1>纵向排列，从上至下，垂直居中</h1>
+    <div class = "box1">
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+    </div>
+    <h1>纵向排列，从上至下，水平居中</h1>
+    <div class = "box2">
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+    </div>
+    <h1>纵向排列，从下至上，垂直居中</h1>
+    <div class = "box3">
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+    </div>
+
+    <h1>横向排列，从左至右</h1>
+    <div class = "box4">
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+        <div class = "item">元素</div>
+    </div>
+
+</body>
+</html>

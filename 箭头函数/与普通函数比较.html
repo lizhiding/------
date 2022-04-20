@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+
+// 【构造函数】
+// 普通函数可以作为构造函数，而箭头函数不可以作为构造函数，因此也不能使用new关键字
+// let f = () =>{
+// 	console.log('123')
+// }
+// let fc = new f();  //这一行报错 f is not a constructor
+
+// 【arguments】
+//伪数组 arguments是一个参数的集合 [1,2,3,4,5,callee: f ,Symbol(Symbol.iterator) : f]
+// function A(a){
+// 	console.log(arguments); 
+//     var a = 'hello world';
+//     console.log(arguments); 
+// }
+// A(1,2,3,4,5)
+// 由于箭头函数不会默认绑定arguments属性，因此会报错
+// let B = (b) =>{
+// 	console.log(arguments);
+// }
+// B(1,2,3,4,5)
+//Es6的扩展运算符
+// let C = (...c) =>{
+// 	console.log(c)
+// }
+// C(1,2,3,4,5)  // [1,2,3,4,5]  
+// var obj = {
+//     a:1,
+//     b:2,
+//     c:3,
+//     d:{
+//         s:123
+//     }
+// };
+// C(obj)  // [1,2,3,4,5]  
+//Es6的扩展运算符，是将对象所有可遍历属性，深复制到当前对象下
+
+// 【this】
+// var a = 1000;
+// var obj = {
+// 	a:10,
+// 	f1:()=>{
+// 		console.log(this.a);
+// 	},
+// 	f2:function(){
+// 		console.log(this.a);
+// 	}
+// }
+// obj.f1();
+// obj.f2();
+// 箭头函数this = 父级作用域this的指向，而且无法改变
+
+// 【原型】
+// 箭头函数没有原型
+// var f1 = ()=>{
+// 	return 1;
+// }
+// function f2(){
+// 	return 2;
+// }
+// // 没有原型
+// console.log(f1.prototype) // undefined
+// // 有显式原型prototype，且prototype.constructor指向自身
+// console.log(f2.prototype) // {constructor:f}
+// console.log(f2.prototype.constructor.name)
+
+
+</script>
+</html>

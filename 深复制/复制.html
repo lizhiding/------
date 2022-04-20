@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    
+</body>
+<script>
+var obj = {
+    a: 'a',
+    b: 'b',
+    c: {
+        c1:'c1',
+        c2:'c2',
+        c3:{
+            c31:'c31',
+            c32:'c32',
+        },
+        arr:[1,2,3,4,5],
+        f:function(){
+            console.log('...');
+        }
+    }
+}
+// 浅复制(拷贝指针)
+// obj1 = Object.assign(obj);
+// obj2 = Object.create(obj);
+// console.log(obj1);
+// console.log(obj2);
+// obj.a = 'aaa';
+// console.log(obj1);
+// console.log(obj2);
+
+// 深复制（复制内容）
+// 方法1、json序列化
+// 无论对象属性是引用类型 or 基本类型，深拷贝。
+// 另外，函数无法被处理
+// obj3 = JSON.parse(JSON.stringify(obj));
+// console.log(obj3);
+// obj.a = 'aaa';
+// console.log(obj3);
+
+// 方法2、遍历所有属性，然后全部复制
+// 如果对象属性存在引用类型，退化为浅拷贝。
+// 如果对象属性都是基本类型，那么是深拷贝。
+// obj_new = {};
+// for(let key in obj)
+// {
+//     obj_new[key] = obj[key]
+// }
+// console.log(obj);
+// console.log(obj_new);
+// obj.c.arr = [1,2];
+// console.log(obj_new);
+
+// 方法3、扩展运算符
+// 如果对象属性存在引用类型，退化为浅拷贝
+// 如果对象属性都是基本类型，那么是深拷贝。
+// var {...obj_new} = obj;
+// console.log(obj);
+// console.log(obj_new);
+// obj.a = 'aaa';
+// obj.c.arr = [1,2];
+// obj.c.c1 = 'c11111';
+// console.log(obj_new);
+
+// 方法4：递归实现
+// 除了函数、日期等一些特殊属性无法处理，基本的嵌套的都可以实现深复制
+// function deepc_lone(obj)
+// {
+//     if(typeof(obj) === 'string' || typeof(obj)==='number' || typeof(obj)==='boolean' || typeof(obj)==='undefined' || typeof(obj)==='null')
+//     {
+//         return obj;
+//     }
+//     else if(obj instanceof Array)
+//     {
+//         var arr = [];
+//         obj.forEach(element => {
+//             arr.push(deepc_lone(element));
+//         });
+//         return arr;
+//     }
+//     else if(typeof(obj)==='object')
+//     {
+//         var new_obj = {};
+//         for(let key in obj)
+//         {
+//             new_obj[key] = deepc_lone(obj[key]);
+//         }
+//         return new_obj;
+//     }
+// }
+
+// new_obj = deepc_lone(obj)
+// console.log(obj);
+// console.log(new_obj);
+
+// obj.a = 'aaa';
+// obj.c.arr = [1,2];
+// obj.c.c1 = 'c11111';
+// console.log(obj);
+// console.log(new_obj);
+
+
+
+</script>
+</html>

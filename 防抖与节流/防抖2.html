@@ -1,0 +1,24 @@
+<div id="number">0</div>
+<button id="button">请疯狂点击</button>
+<script>
+    //事件处理函数
+    var number = document.getElementById("number");
+    var num = 0;
+    function handler(){
+        number.innerText =  ++num;
+    }
+
+    //防抖函数
+    function antishake(handler,interval){
+        var lastDate = 0;
+        var timer;
+        return function(){
+            clearTimeout(timer);
+            timer = setTimeout(handler,interval);
+        }
+    }
+
+    // 给节点绑定防抖函数
+    document.getElementById("button").onclick = antishake(handler,1000);
+
+</script>

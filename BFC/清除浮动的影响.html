@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent1
+        {
+            /* 在父元素不设置高度的情况下 */
+            border: 5px solid rgb(30, 243, 136);
+            width: 300px;
+            /* 不设置BFC，浮动元素不参与到高度计算 */
+            /* overflow: hidden; */
+        }
+        .parent2
+        {
+            border: 5px solid rgb(37, 243, 30);
+            width: 300px;
+            /* 设置BFC，使得浮动元素也参与到高度计算 */
+            overflow: hidden;
+        }
+        
+        .child 
+        {
+            border: 5px solid hwb(41 8% 4%);
+            width:100px;
+            height: 100px;
+            /* 子元素设置float，那么父元素的高度默认不会考虑子元素的高度 */
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>在父元素不设置高度的情况下：不设置BFC，浮动元素不参与到高度计算</h1>
+    <div class="parent1">
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+    <br><br><br><br><br><br><br><br>
+    <h1>在父元素不设置高度的情况下：设置BFC，将所有的浮动元素包裹起来，清除浮动影响，使得浮动元素也参与到高度计算</h1>
+    <div class="parent2">
+        <div class="child"></div>
+        <div class="child"></div>
+    </div>
+</body>
+</html>

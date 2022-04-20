@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+// 【全局】
+// 在全局环境下，this 始终指向全局对象（window）
+// console.log(this.document === document); // true
+// console.log(this === window); // true
+// console.log(this)
+// this.a = '2022-03-16';
+// console.log(window.a); // 37
+
+// 【普通函数：严格模式与非严格模式】
+// 普通函数中this默认指向调用者，但是在严格模式下，禁止指向全局对象
+// function f1(){
+//   console.log(this);
+// }
+// f1()
+
+// function f2(){
+//   "use strict"; // 这里是严格模式
+//   console.log(this);
+// }
+// f2()
+// var obj = {
+//   a : 100,
+//   f3 : function(){
+//     "use strict"; // 这里是严格模式
+//     console.log(this.a);
+//   }
+// }
+// obj.f3()
+
+// 【原型链中的this】
+// var obj1 = {
+//   name: 'obj1',
+//   f : function(){ 
+//     console.log(this); 
+//     console.log(this.__proto__); 
+//   }
+// };
+// obj1.f();
+// // 隐式原型.constructor就是该对象的构造函数
+// console.log(obj1.__proto__.constructor);
+// console.log(obj1.__proto__.constructor.prototype);
+
+// // 显然obj2没有函数f，因此根据原型链，obj2会到隐式原型中寻找f
+// var obj2 = Object.create(obj1);
+// obj2.name = 'obj2';
+// obj2.f();
+// // 两次this都指向调用者，充分说明，谁调用指向谁
+
+// 【构造函数中的this】
+// 构造函数中的this与被创建的新对象绑定
+
+// function Person(){
+//   this.sex = "man";
+//   console.log(this);
+// }
+// zhangsan = new Person();
+// zhangsan.name = "zhangsan"
+// // 隐式原型对象
+// console.log(zhangsan.__proto__);
+// // 虽然无法与构造器直接通信，但是可以通过隐式原型对象间接找到构造器
+// console.log(zhangsan.__proto__.constructor.name);
+// // 隐式原型对象的构造器是Object
+// console.log(zhangsan.__proto__.__proto__.constructor.name);
+
+// console.log(zhangsan.__proto__.__proto__.__proto__);
+// console.log('--------------');
+// lisi = new Person();
+// lisi.name = "lisi"
+// console.log(lisi.__proto__);
+
+// 【修改this指向】
+// 如果第一个参数不是对象，JavaScript内部会尝试将其转换成对象然后指向它。
+// a=10;
+// b=20;
+// function add(c, d){
+//   console.log(this.a + this.b + c + d);
+// }
+// add(10, 20);
+// var o = {a:1, b:2};
+// add.call(o, 3, 4);
+// add.apply(o, [3, 5]);
+
+// function test() {
+//   console.log(this);
+// }
+// test();
+// test.call(5);  // Number {[[PrimitiveValue]]: 5} 
+// test.call('abcdefg'); // String {0: "a", 1: "s", 2: "d", length: 3, [[PrimitiveValue]]: "asd"}
+
+// // 普通函数的隐式原型对象
+// console.log(test.__proto__);
+// // 普通函数的构造器
+// console.log(test.__proto__.constructor.name);
+
+// 【关于this指向】
+// let dog = {
+//   name: 'dog',
+//   a: function () {
+//     var cat = {
+//       name: 'cat',
+//       b: () => {
+//         console.log(this.name, this)
+//       },
+//       c: function () {
+//         console.log(this.name, this)
+//       }
+//     }
+//     cat.b()
+//     cat.c()
+//   }
+// }
+// dog.a()
+
+// 箭头函数b的this指向cat所在作用域的this，cat所在作用域的this指向dog，因此箭头函数的this最终指向dog
+// 普通函数c的this指向调用者，调用者是cat，因此最终指向cat
+</script>
+</html>
