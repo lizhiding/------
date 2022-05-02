@@ -7,3 +7,7 @@
 
 3、将修改推送到远程仓库
 直接点击同步即可
+
+推送时出现10054错误的解决方法：
+桌面打开git bash
+$ git config --global http.sslVerify "false"
