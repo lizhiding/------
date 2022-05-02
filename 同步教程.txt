@@ -30,5 +30,11 @@ https://www.jianshu.com/p/b4da7c14d90f
 
 我的项目文件夹，CMD窗口下 输入两行命令
 
+
 PS D:\My-Code> git config --global --unset http.proxy
 PS D:\My-Code> git config --global --unset https.proxy
+不行
+
+在桌面gitbash输入命令
+git config --global --unset http.proxy
+git config --global --unset https.proxy
