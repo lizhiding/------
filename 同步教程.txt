@@ -18,3 +18,17 @@ https://blog.csdn.net/a15779627836/article/details/114677116
 解决步骤：
 桌面打开git bash
 $ git config --global http.sslVerify "false"
+
+
+结果刚修改完之后的第一次提交，可以成功提交
+
+之后再次提交又出现了相同的问题
+
+
+参考链接：
+https://www.jianshu.com/p/b4da7c14d90f
+
+我的项目文件夹，CMD窗口下 输入两行命令
+
+PS D:\My-Code> git config --global --unset http.proxy
+PS D:\My-Code> git config --global --unset https.proxy
