@@ -8,6 +8,13 @@
 3、将修改推送到远程仓库
 直接点击同步即可
 
-推送时出现10054错误的解决方法：
+
+出现的一些问题：
+
+1、推送时出现10054错误
+fatal: unable to access ' OpenSSL SSL_read: Connection was reset, errno 10054
+参考链接：
+https://blog.csdn.net/a15779627836/article/details/114677116
+解决步骤：
 桌面打开git bash
 $ git config --global http.sslVerify "false"
